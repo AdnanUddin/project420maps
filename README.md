@@ -6,8 +6,17 @@ marley: skeleton project for project
 
 **TODO**: create skeleton django app
         - created Marley App
+        
+        
 **TODO**: Host on Heroku  
+
+
 **TODO**: landing maps page
         - added generic maps
+        
+        
 **TODO**: add Android and iPhone apps  
+
+
 **TODO**: create sample requests
+
