@@ -1,6 +1,46 @@
-<h1>Hello World from HTML!</h1>
-<h2>Testinf</h2>
-<br>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'marley/css/style.css'%}">
 
-    <h3><a href="{% url 'marley:index' map %}">map</a></h3>
+<h1>Hello World from HTML!</h1>
+<br>
+<h3>My Google Maps Demo</h3>
+<div id="map">
+    <script>
+        var map, infoWindow;
+        function initMap() {
+            var default_location = {lat: -34.397, lng: 150.644};
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: default_location
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(function(position){
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('Location found.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }, function(){
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            } else {
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos){
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ? 'GeoLocation Failed' : 'Browser does not support GeoLocation');
+            infoWindow.open(map);
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAal_rY4NqgQSeZbISyYbrbJYQPFPuI100&callback=initMap"></script>
+</div>
+
 
