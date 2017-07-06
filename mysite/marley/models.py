@@ -7,3 +7,8 @@ class Map(models.Model):
 
     def __str__(self):
         return self.map_text
+class Buyer(models.Model):
+    buyer_text = ''
+
+class Seller(models.Model):
+    seller_text = ''
