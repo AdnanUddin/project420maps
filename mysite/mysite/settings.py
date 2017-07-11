@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+import mongoengine
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +33,7 @@ ALLOWED_HOSTS = ['secret-hamlet-51406.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_mongoengine',
     'marley.apps.MarleyConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -79,10 +81,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django_mongodb_engine',
+        'NAME': os.path.join(BASE_DIR, 'db_mongodb'),
     }
 }
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": os.path.join(BASE_DIR, 'db_mongodb'),
+        "host": 'localhost',
+        "password": 'winston12',
+        "username": 'admin',
+        "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+    },
+}
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 

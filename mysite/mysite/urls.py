@@ -20,7 +20,7 @@ from django.http import HttpResponseRedirect
 
 
 urlpatterns = [
-    url(r'^$', include('marley.urls')),
+    url(r'^', include('marley.urls')),
     
     url(r'^polls/', include('polls.urls')),
     url(r'^marley/', include('marley.urls')),

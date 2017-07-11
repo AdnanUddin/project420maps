@@ -43,4 +43,18 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAal_rY4NqgQSeZbISyYbrbJYQPFPuI100&callback=initMap"></script>
 </div>
 
+</br>
+
+<div>
+    Buyer List   
+    {% if buyer_list %}
+        <us>
+            {% for buyer in buyer_list %}
+                <li> {{ buyer.name_text }} </li>
+            {% endfor %}
+        </us>
+    {% endif %}
+</div>
+
+
 
