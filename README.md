@@ -17,3 +17,11 @@ marley: skeleton project for project
 
 **TODO**: create sample requests
 
+
+### To install virtualenv
+```python
+
+pip install -r requirements.txt
+
+
+```
