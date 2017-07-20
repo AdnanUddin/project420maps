@@ -100,6 +100,5 @@ ENV/
 # mypy
 .mypy_cache/
 
-
-# virtualenv
-/420maps
+# idea files
+/.idea/
